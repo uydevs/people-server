@@ -1,3 +1,3 @@
-# Personas Server
+# People Server
 
-For configuration file contact devs in charge
+For configuration file please contact devs in charge
