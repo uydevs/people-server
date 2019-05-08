@@ -6,4 +6,16 @@ module.exports = router => {
       .then(people => res.json(people))
       .catch(err => res.json(err));
   });
+
+  router.delete('/api/people/:id', (req, res) => {
+    res.send(200);
+  });
+
+  router.put('/api/people/:id', (req, res) => {
+    res.send(200);
+  });
+
+  router.post('/api/people', (req, res) => {
+    res.send(200);
+  });
 };
