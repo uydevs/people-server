@@ -24,8 +24,12 @@ require('../routes/people')(router);
 app.use(router);
 app.use('/.netlify/functions/server', router);
 
+const MONGO_DB_URI = process.env.MONGO_DB_URI
+  ? process.env.MONGO_DB_URI
+  : config.MONGO_DB_URI;
+
 // DB connection
-mongoose.connect(config.MONGO_DB_URI, {
+mongoose.connect(MONGO_DB_URI, {
   useNewUrlParser: true,
   dbName: 'test'
 }).then(
