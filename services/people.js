@@ -1,36 +1,9 @@
-function getPeople () {
-  return Promise.resolve([
-    {
-      name: 'Andres',
-      surname: 'Vila',
-      age: 26,
-      married: false,
-    },
-    {
-      name: 'Colo',
-      surname: 'Reyes',
-      age: 0,
-      married: false,
-    },
-    {
-      name: 'Gonza',
-      surname: 'Diaz',
-      age: 0,
-      married: false,
-    },
-    {
-      name: 'Maxi',
-      surname: 'Dominguez',
-      age: 0,
-      married: false,
-    },
-    {
-      name: 'Tincho',
-      surname: 'Garbarino',
-      age: 0,
-      married: false,
-    },
-  ]);
+const mongoose = require('mongoose');
+
+const Person = mongoose.model('person');
+
+async function getPeople () {
+  return await Person.find();
 }
 
 module.exports = {
