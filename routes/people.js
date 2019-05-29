@@ -1,4 +1,4 @@
-const { getPeople } = require('../services/people');
+const { getPeople, addPerson } = require('../services/people');
 
 module.exports = router => {
   router.get('/api/people', (req, res) => {
@@ -16,6 +16,8 @@ module.exports = router => {
   });
 
   router.post('/api/people', (req, res) => {
-    res.send(200);
+    addPerson(req.body)
+      .then(person => res.json(person))
+      .catch(err => res.json(err))
   });
 };
