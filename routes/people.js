@@ -1,4 +1,4 @@
-const { getPeople, addPerson } = require('../services/people');
+const { getPeople, addPerson, deletePerson } = require('../services/people');
 
 module.exports = router => {
   router.get('/api/people', (req, res) => {
@@ -8,7 +8,9 @@ module.exports = router => {
   });
 
   router.delete('/api/people/:id', (req, res) => {
-    res.send(200);
+    deletePerson(req.params.id)
+      .then(person => res.json(person))
+      .catch(err => res.json(err))
   });
 
   router.put('/api/people/:id', (req, res) => {

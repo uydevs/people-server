@@ -10,7 +10,17 @@ async function addPerson (personObj) {
   return await person.save();
 }
 
+async function deletePerson (personId) {
+  try {
+    await Person.deleteOne({ _id: personId });
+    res.send(200);
+  } catch(err) {
+    res.status(500).json({ err });
+  }
+}
+
 module.exports = {
   getPeople,
-  addPerson
+  addPerson,
+  deletePerson,
 };
