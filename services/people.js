@@ -5,12 +5,12 @@ async function getPeople () {
   return await Person.find();
 }
 
-async function addPerson (personObj) {
+async function addPerson(personObj) {
   const person = new Person(personObj);
   return await person.save();
 }
 
-async function deletePerson (personId) {
+async function deletePerson(personId) {
   try {
     await Person.deleteOne({ _id: personId });
     res.send(200);
@@ -19,8 +19,13 @@ async function deletePerson (personId) {
   }
 }
 
+async function updatePerson({ _id, ...rest }) {
+  return await Person.findOneAndUpdate({ _id }, rest, { new: true });
+}
+
 module.exports = {
   getPeople,
   addPerson,
   deletePerson,
+  updatePerson,
 };
